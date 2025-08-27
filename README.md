@@ -158,6 +158,9 @@ void core1_entry() {
 - `vm_init_hw()` initializes the PSRAM and SD card.
 - `start_vm()` runs the emulator and returns the next power state to handle (e.g., reboot, power off, etc.).
 
+## Linux images
+The Linux distribution meant to be used with tiny-rv32ima is built from [buildroot-tiny-rv32ima](https://github.com/tvlad1234/buildroot-tiny-rv32ima.git). Pre-built images are available in the Releases section of the buildroot-tiny-rv32ima repo.
+
 ## Implementation examples
 
 ## License
