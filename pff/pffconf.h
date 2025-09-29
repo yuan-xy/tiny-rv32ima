@@ -14,9 +14,9 @@
 #define	PF_USE_LSEEK	1	/* pf_lseek() function */
 #define	PF_USE_WRITE	1	/* pf_write() function */
 
-#define PF_FS_FAT12		0	/* FAT12 */
+#define PF_FS_FAT12		1	/* FAT12 */
 #define PF_FS_FAT16		1	/* FAT16 */
-#define PF_FS_FAT32		1	/* FAT32 */
+#define PF_FS_FAT32		0	/* FAT32 */
 
 
 /*---------------------------------------------------------------------------/

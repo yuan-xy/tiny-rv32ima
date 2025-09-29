@@ -24,6 +24,9 @@ uint8_t psram_read_kgd(void)
     psram_select();
     psram_spi_write(buf, 4);
     psram_spi_read(buf, 6);
+    for(int i=0; i<6; i++)
+        printf("%x ", buf[i]);
+    printf("\n");
     psram_deselect();
 
     if (buf[1] == PSRAM_KGD)

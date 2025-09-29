@@ -11,7 +11,7 @@ This library implements a RISC-V emulator capable of running Linux without MMU s
 - 32-bit RISC-V emulation (RV32IMA instruction set)
 - No-MMU Linux support
 - Simple HAL interface for platform portability
-- SD card support for kernel and filesystem storage
+- SD card(or Nor-Flash) support for kernel and filesystem storage
 - Supports hibernating to SD card
 
 ## VM Configuration (`vm_config.h`)
@@ -80,7 +80,7 @@ void psram_spi_write(uint8_t* buf, size_t sz);  // Write data to memory
 void psram_spi_read(uint8_t* buf, size_t sz);   // Read data from memory
 ```
 
-### SD Card HAL (`hal_sd.h`)
+### SD Card / Flash HAL (`hal_sd.h`)
 ```c
 void sd_select(void);             // Select the SD card (CS low)
 void sd_deselect(void);           // Deselect the SD card (CS high)
@@ -88,6 +88,7 @@ uint8_t sd_spi_byte(uint8_t b);   // Transfer a byte over SPI and return the rec
 void sd_led_on(void);             // (Optional) Turn on SD activity LED
 void sd_led_off(void);            // (Optional) Turn off SD activity LED
 ```
+
 ### Timing HAL (`hal_timing.h`)
 ```c
 void timing_delay_ms(uint32_t ms);     // Delay for ms milliseconds
