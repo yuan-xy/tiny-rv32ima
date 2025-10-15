@@ -169,3 +169,6 @@ The Linux distribution meant to be used with tiny-rv32ima is built from [buildro
 This library is based on [CNLohr's mini-rv32ima](https://github.com/cnlohr/mini-rv32ima), which is licensed under the MIT License. See the original project's license for terms and conditions.
 
 The `pff` directory includes the full PetitFatFs library by ChaN (http://elm-chan.org/fsw/ff/00index_p.html), with only minor modifications (such as `mmcbbp.c`). PetitFatFs is subject to its own license (see source files for details).
+
+## 修改说明
+增加了pff/w25qxx.c，这样就可以在nor flash里写入fatfs文件系统镜像，并通过spi接口访问。原有的sd卡访问接口，现在就可以同时支持sd卡和flash。此外，由于flash往往小于16MB，所以要选择开启PF_FS_FAT12支持。

@@ -153,8 +153,10 @@ void vm_init_hw(void)
     do
     {
         rc = pf_mount(&fatfs);
-        if (rc)
+        if (rc){
+            printf("pf_mount err:%d\n", rc);
             tries++;
+        }
         timing_delay_ms(200);
     } while (rc && tries < 5);
 
@@ -282,7 +284,8 @@ int start_vm(int prev_power_state)
 
     rc = pf_open(BLK_FILENAME);
     if (rc)
-        console_panic("Error opening block device image\n\r");
+        console_puts("Error opening block device image, ONLY support ramfs\n\r");
+
 
     console_puts("Starting RISC-V VM\n\n\r");
 
@@ -385,6 +388,7 @@ int start_vm(int prev_power_state)
 static inline uint32_t HandleException(uint32_t ir, uint32_t code)
 {
     // Weird opcode emitted by duktape on exit.
+    printf("exception(ir,code):%d, %d\n", ir, code);
     if (code == 3)
     {
         // Could handle other opcodes here.
